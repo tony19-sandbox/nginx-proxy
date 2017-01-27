@@ -1,0 +1,14 @@
+version: '2'
+services:
+  api:
+    image: jfloff/alpine-python:latest-slim
+    expose:
+      - "8080"
+    ports:
+      - "8080:8080"
+    environment:
+      - "VIRTUAL_HOST=api.outstep.net"
+      - "VIRTUAL_PROTO=https"
+      - "LETSENCRYPT_HOST=outstep.net"
+      - "LETSENCRYPT_EMAIL=tony19@gmail.com"
+    command: ["python", "-m", "http.server", "8080"]
